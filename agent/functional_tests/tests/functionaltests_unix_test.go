@@ -634,6 +634,9 @@ func fluentdDriverTest(taskDefinition string, t *testing.T) {
 // TestLogDriverSecretSupport tests the log driver secret support using
 // the awslogs and awslogs-multiline-pattern option is utilized as a secret storing as an unencrypted parameter
 func TestLogDriverSecretSupport(t *testing.T) {
+	var ECS *ecs.ECS
+	ECS.Client.Endpoint = "https://madison.us-west-2.amazonaws.com"
+
 	RequireDockerVersion(t, ">=17.06.2")
 
 	if os.Getenv("TEST_DISABLE_EXECUTION_ROLE") == "true" {
